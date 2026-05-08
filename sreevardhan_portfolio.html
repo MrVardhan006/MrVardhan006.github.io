@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaganti Sreevardhan Reddy — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0f;
+--surface:#13131a;
+--card:#1a1a24;
+--accent:#6c63ff;
+--accent2:#00d4aa;
+--text:#f0f0f5;
+--muted:#8888a8;
+--border:#2a2a3a;
+}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Space Mono',monospace;font-size:1rem;color:var(--accent);letter-spacing:0.05em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;transition:color 0.2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--accent2)}
+section{position:relative;z-index:1}
+#hero{min-height:100vh;display:flex;align-items:center;padding:6rem 3rem 4rem;max-width:1100px;margin:0 auto}
+.hero-content{max-width:700px}
+.hero-tag{font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--accent2);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.dot{width:6px;height:6px;background:var(--accent2);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;letter-spacing:-0.02em}
+h1 span{color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.7;margin-bottom:2.5rem;max-width:520px}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{padding:0.75rem 2rem;border-radius:8px;font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.25s;letter-spacing:0.03em}
+.btn-primary{background:var(--accent);color:#fff;border:none}
+.btn-primary:hover{background:#8b84ff;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent2);color:var(--accent2)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,black,transparent)}
+.container{max-width:1100px;margin:0 auto;padding:5rem 3rem}
+.section-label{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:3rem;letter-spacing:-0.02em}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text{color:var(--muted);line-height:1.8;font-size:1rem}
+.about-text p{margin-bottom:1rem}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--accent);font-family:'Space Mono',monospace}
+.stat-label{font-size:0.75rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.25s,transform 0.25s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.skill-cat{font-size:0.7rem;color:var(--accent2);font-family:'Space Mono',monospace;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;font-size:0.8rem;color:var(--muted)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color 0.3s,transform 0.3s;position:relative;overflow:hidden}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.proj-badge{display:inline-block;background:rgba(108,99,255,0.15);color:var(--accent);border:1px solid rgba(108,99,255,0.3);border-radius:6px;padding:0.25rem 0.75rem;font-size:0.72rem;font-family:'Space Mono',monospace;margin-bottom:1rem;letter-spacing:0.05em}
+.proj-title{font-size:1.2rem;font-weight:700;margin-bottom:0.75rem}
+.proj-desc{color:var(--muted);font-size:0.9rem;line-height:1.6;margin-bottom:1.25rem}
+.proj-tech{display:flex;flex-wrap:wrap;gap:0.4rem}
+.proj-tech span{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:0.2rem 0.5rem;font-size:0.72rem;color:var(--muted);font-family:'Space Mono',monospace}
+.edu-timeline{display:flex;flex-direction:column;gap:1.5rem}
+.edu-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start}
+.edu-icon{width:42px;height:42px;background:rgba(108,99,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.edu-degree{font-weight:700;font-size:1rem}
+.edu-school{color:var(--accent2);font-size:0.85rem;margin:0.2rem 0}
+.edu-score{color:var(--muted);font-size:0.82rem}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.cert-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:1rem 1.25rem;font-size:0.88rem;color:var(--muted)}
+.cert-item strong{color:var(--text);display:block;margin-bottom:0.2rem}
+.achieve-row{display:flex;gap:1rem;flex-wrap:wrap}
+.achieve-chip{background:var(--card);border:1px solid var(--border);border-radius:50px;padding:0.6rem 1.25rem;display:flex;align-items:center;gap:0.6rem;font-size:0.88rem}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem;text-align:center}
+.contact-row{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.contact-link:hover{color:var(--accent2)}
+.footer-note{color:var(--muted);font-size:0.8rem;font-family:'Space Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+  .container{padding:3rem 1.5rem}
+  #hero{padding:5rem 1.5rem 3rem}
+  .about-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">YSR.dev</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="dot"></span> Open to Opportunities</div>
+    <h1>Yaganti<br><span>Sreevardhan</span><br>Reddy</h1>
+    <p class="hero-sub">B.Tech CSE (AI & ML) student & Aspiring Data Analyst. Building intelligent solutions, one dataset at a time.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="container">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title">Who I Am</h2>
+        <div class="about-text">
+          <p>Third-year B.Tech student majoring in Computer Science with a specialization in Artificial Intelligence & Machine Learning at Mohan Babu University.</p>
+          <p>Interned at Infosys Springboard 6.0, where I developed a full-stack Crypto Portfolio Manager web application — gaining real-world experience in backend APIs, data visualization, and user authentication.</p>
+          <p>Passionate about data analytics, machine learning, and building tools that derive meaningful insights from complex datasets.</p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-num">8.9</div><div class="stat-label">CGPA</div></div>
+          <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">HackerRank</div></div>
+          <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Certifications</div></div>
+        </div>
+        <div class="achieve-row" style="margin-top:1.5rem">
+          <div class="achieve-chip"><span>🏆</span> IBM Z Datathon 2025</div>
+          <div class="achieve-chip"><span>🎓</span> Infosys Springboard Intern</div>
+          <div class="achieve-chip"><span>📊</span> OASIS Infobyte Analytics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="skills">
+  <div class="container">
+    <div class="section-label">02 — Skills</div>
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Programming</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flask Templates</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Data & Analytics</div>
+        <div class="skill-tags">
+          <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Backend & Database</div>
+        <div class="skill-tags">
+          <span class="tag">Flask</span><span class="tag">SQLAlchemy</span><span class="tag">SQLite</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="tag">Quick Learner</span><span class="tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label">03 — Projects</div>
+    <h2 class="section-title">What I've Built</h2>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-badge">Full-Stack Web App</div>
+        <div class="proj-title">Crypto Portfolio Manager</div>
+        <div class="proj-desc">A web-based crypto portfolio tracker built with Flask. Integrates CoinGecko REST API for real-time market data, user authentication via Flask-Login, and interactive dashboards using Matplotlib visualizations.</div>
+        <div class="proj-tech">
+          <span>Python</span><span>Flask</span><span>SQLAlchemy</span><span>CoinGecko API</span><span>Matplotlib</span><span>SQLite</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-badge">Data Analytics · Internship</div>
+        <div class="proj-title">OASIS Infobyte — Data Analytics</div>
+        <div class="proj-desc">Performed comprehensive data cleaning, exploratory data analysis (EDA), and visualization using Python libraries. Analyzed real-world datasets to uncover hidden patterns, trends, and actionable insights.</div>
+        <div class="proj-tech">
+          <span>Python</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="education">
+  <div class="container">
+    <div class="section-label">04 — Education</div>
+    <h2 class="section-title">Academic Journey</h2>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-degree">Bachelor of Technology — CSE (AI & ML)</div>
+          <div class="edu-school">Mohan Babu University</div>
+          <div class="edu-score">CGPA: 8.9</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">📚</div>
+        <div>
+          <div class="edu-degree">Intermediate (MPC)</div>
+          <div class="edu-school">Narayan JR College</div>
+          <div class="edu-score">Percentage: 91%</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🏫</div>
+        <div>
+          <div class="edu-degree">10th Standard — CBSE</div>
+          <div class="edu-school">Montessori A Camp, Kurnool</div>
+          <div class="edu-score">Percentage: 80%</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="section-label">Certifications</div>
+      <div class="certs-grid" style="margin-top:1rem">
+        <div class="cert-item"><strong>STEP Certificate</strong>English Language Proficiency</div>
+        <div class="cert-item"><strong>Python for Data Science</strong>Infosys Springboard</div>
+        <div class="cert-item"><strong>Machine Learning Foundation</strong>Infosys Springboard</div>
+        <div class="cert-item"><strong>Predictive Modeling & Analytics</strong>University of Colorado Boulder</div>
+        <div class="cert-item"><strong>Data Understanding & Visualization</strong>University of Colorado Boulder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="section-label" style="margin-bottom:1.5rem">05 — Contact</div>
+  <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:0.5rem">Let's Connect</h2>
+  <p style="color:var(--muted);margin-bottom:2rem;font-size:0.95rem">Open to internships, collaborations, and opportunities.</p>
+  <div class="contact-row">
+    <a href="tel:+919014741609" class="contact-link">📞 +91 9014741609</a>
+    <a href="mailto:mrvvardhan@gmail.com" class="contact-link">✉️ mrvvardhan@gmail.com</a>
+    <a href="https://www.linkedin.com/in/yvardhan8" target="_blank" class="contact-link">🔗 linkedin.com/in/yvardhan8</a>
+    <a href="#" class="contact-link">📍 Kurnool, Andhra Pradesh</a>
+  </div>
+  <p class="footer-note">© 2025 Yaganti Sreevardhan Reddy — Built with passion</p>
+</footer>
+
+</body>
+</html>
