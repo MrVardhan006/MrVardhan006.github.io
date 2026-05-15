@@ -32,12 +32,48 @@ section{position:relative;z-index:1}
 h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;letter-spacing:-0.02em}
 h1 span{color:var(--accent)}
 .hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.7;margin-bottom:2.5rem;max-width:520px}
-.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{padding:0.75rem 2rem;border-radius:8px;font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.25s;letter-spacing:0.03em}
-.btn-primary{background:var(--accent);color:#fff;border:none}
-.btn-primary:hover{background:#8b84ff;transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-outline:hover{border-color:var(--accent2);color:var(--accent2)}
+.cta-row{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 30px;
+  border-radius:12px;
+  font-family:'Syne',sans-serif;
+  font-size:0.95rem;
+  font-weight:700;
+  text-decoration:none;
+  transition:0.3s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#6c63ff,#8b84ff);
+  color:#fff;
+  box-shadow:0 10px 25px rgba(108,99,255,.35);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(108,99,255,.45);
+}
+
+.btn-outline{
+  background:rgba(255,255,255,0.03);
+  border:1px solid #2f2f45;
+  color:#fff;
+  backdrop-filter:blur(10px);
+}
+
+.btn-outline:hover{
+  border-color:#6c63ff;
+  color:#6c63ff;
+  transform:translateY(-4px);
+}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,black,transparent)}
 .container{max-width:1100px;margin:0 auto;padding:5rem 3rem}
 .section-label{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem}
@@ -110,8 +146,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem
     <h1>Yaganti<br><span>Sreevardhan</span><br>Reddy</h1>
     <p class="hero-sub">B.Tech CSE (AI & ML) student & Aspiring Data Analyst. Building intelligent solutions, one dataset at a time.</p>
     <div class="cta-row">
-      <a href="projects" class="btn btn-primary">View Projects</a>
-      <a href="contact" class="btn btn-outline">Get In Touch</a>
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
     </div>
   </div>
 </section>
